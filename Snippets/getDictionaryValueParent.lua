@@ -14,21 +14,20 @@ local function getParentOf(tagVal)
 	recursiveLoop = function(parent)
 		for k, v in pairs(parent) do
 			if type(v) ~= 'table' then continue end
-                if find(v, tagVal) then
-                    return v
-                else
-                    return recursiveLoop(v)
-                end
-            end
-        end
-        
-        for k, v in pairs(tree) do
-            if type(v) ~= 'table' then continue end
             if find(v, tagVal) then
                 return v
             else
                 return recursiveLoop(v)
             end
+        end
+    end
+        
+    for k, v in pairs(tree) do
+        if type(v) ~= 'table' then continue end
+        if find(v, tagVal) then
+            return v
+        else
+            return recursiveLoop(v)
         end
     end
 end
