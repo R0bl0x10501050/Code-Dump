@@ -10,11 +10,10 @@ find = function(originalTable, findValue)
 end
 
 local function getParentOf(tagVal)
-        local recursiveLoop
-        recursiveLoop = function(parent)
-            for k, v in pairs(parent) do
-                if type(v) ~= 'table' then continue end
-                --print(v)
+	local recursiveLoop
+	recursiveLoop = function(parent)
+		for k, v in pairs(parent) do
+			if type(v) ~= 'table' then continue end
                 if find(v, tagVal) then
                     return v
                 else
@@ -32,3 +31,4 @@ local function getParentOf(tagVal)
             end
         end
     end
+end
